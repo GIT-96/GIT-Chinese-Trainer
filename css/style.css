@@ -395,3 +395,44 @@ html,body{width:100%;max-width:100%;overflow-x:hidden}
 .drawer-levels button:active{transform:scale(.96)}
 .drawer-syllabus-note{font-size:10px;line-height:1.5;color:#7189a4;padding:0 11px;margin:8px 0 0}
 @media(prefers-reduced-motion:reduce){.drawer-links button{opacity:1;transform:none;transition:none!important}.app-drawer.is-open .drawer-links button{transition-delay:0ms}}
+
+/* V14: compact native-like mobile practice, assistant shortcut and scroll region */
+.top-actions{display:flex;align-items:center;gap:7px;flex-shrink:0}
+.top-actions .icon-btn{display:grid;place-items:center;width:36px;height:36px;padding:0!important}
+.top-actions .ai-shortcut{background:#ffffff32;border-color:#ffffff65}
+.top .brand-label strong{font-size:14px!important}
+.drawer-permissions{display:flex;align-items:center;gap:10px;margin:10px 8px 0;padding:11px 10px;background:#eff6ff;border:0;border-radius:11px;color:#155ba7;font-weight:650;text-align:left}
+.drawer-permissions svg{width:18px;height:18px}
+#practice .practice-card{padding:13px!important;border-radius:20px!important}
+#practice .practice-card>.spread{align-items:center}
+#practice .mode-bar{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;margin:10px 0!important}
+#practice #mode{min-width:0;width:100%;font-size:13px!important;min-height:42px!important;border-radius:12px!important}
+#practice #newQuiz{font-size:12px!important;min-height:42px!important;border-radius:12px!important;padding:0 10px!important}
+#practice .prompt-card{border-radius:16px!important;padding:14px 12px!important;background:linear-gradient(145deg,#f0f8ff,#e5f1ff)!important}
+#practice .prompt-accent{font-size:10px!important;letter-spacing:.8px}
+#practice #questionType{font-size:12px!important}
+#practice #prompt{font-size:clamp(23px,6vw,31px)!important;font-weight:800!important;line-height:1.25!important}
+#practice #answer{min-height:48px!important;border-radius:13px!important;font-size:17px!important}
+#practice .audio-actions{gap:8px!important}
+#practice .audio-actions button{min-height:41px!important;font-size:12px!important;border-radius:12px!important}
+#practice #check,#practice #next{min-height:48px!important;border-radius:13px!important;font-size:15px!important}
+#vocab .searchbox{border-radius:14px!important}
+#vocab .filter-chips{gap:7px!important;overflow-x:auto;scrollbar-width:none}
+#vocab .filter-chips::-webkit-scrollbar{display:none}
+#vocab #vocabList{max-height:min(64dvh,660px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;-ms-overflow-style:none;padding:2px 2px 12px;touch-action:pan-y}
+#vocab #vocabList::-webkit-scrollbar{display:none}
+#vocab #vocabList .vocab-item{min-height:78px!important;margin-bottom:8px!important;border-radius:14px!important}
+.permission-overlay{position:fixed;inset:0;z-index:120;background:#0c254b99;display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(5px)}
+.permission-sheet{width:min(390px,100%);max-height:90dvh;overflow-y:auto;background:#fff;border-radius:23px;padding:24px 20px;color:#1a3659;box-shadow:0 25px 70px #08214445}
+.permission-sheet h2{font-size:21px;margin:10px 0 6px}
+.permission-sheet>p{font-size:12px;color:#637b96;line-height:1.6}
+.permission-emblem{width:48px;height:48px;display:grid;place-items:center;border-radius:15px;background:#e5f2ff;color:#0671dd}
+.permission-row{display:flex;align-items:center;gap:10px;padding:14px 0;border-bottom:1px solid #e8eef7}
+.permission-row>svg{width:20px;color:#1680e5;flex-shrink:0}
+.permission-row>div{flex:1;min-width:0}
+.permission-row strong,.permission-row small{display:block}
+.permission-row strong{font-size:13px}.permission-row small{font-size:10px;color:#8294a9;margin-top:3px}
+.permission-row button{border:1px solid #bddcff;background:#eef6ff;color:#0870d6;border-radius:9px;padding:9px;font-size:11px;white-space:nowrap}
+.permission-sheet .permission-note{font-size:10px}
+.permission-sheet>.primary{width:100%;margin-top:12px;border-radius:12px}
+@media(max-width:360px){.top-actions .icon-btn{width:32px;height:34px}.top .brand-label strong{font-size:12px!important}.top .brand-label small{font-size:9px!important}}
