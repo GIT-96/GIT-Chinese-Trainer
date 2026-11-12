@@ -537,3 +537,11 @@ html,body{width:100%;max-width:100%;overflow-x:hidden}
 .write-meter{height:8px;background:#d4e6f7;border-radius:20px;overflow:hidden}
 .write-meter span{display:block;height:100%;width:0;background:linear-gradient(90deg,#1684ed,#13b99b);transition:width .4s}
 #writeGrade{flex:1.4}
+
+/* V19 handwriting grading progress */
+.write-progress{margin:12px 0;padding:12px 14px;border:1px solid #d8e9fb;border-radius:13px;background:#f1f8ff;color:#205784}
+.write-progress-head{display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:12px;margin-bottom:9px}
+.write-progress-head strong{font-variant-numeric:tabular-nums;color:#0876ed}
+.write-progress-track{height:9px;overflow:hidden;border-radius:999px;background:#d6e6f7}
+.write-progress-track span{display:block;height:100%;width:0;background:linear-gradient(90deg,#1673e9,#13b99b);border-radius:inherit;transition:width .16s ease}
+#writeGrade:disabled{opacity:.65;cursor:wait}
