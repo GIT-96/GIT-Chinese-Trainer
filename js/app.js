@@ -84,7 +84,7 @@ function paintWrite(){const cv=$('writeCanvas'),r=cv.getBoundingClientRect();if(
 function hideWriteGrade(){writeGradeToken++;writeGradeBusy=false;const box=$('writeFeedback');if(box)box.hidden=true;const overlay=$('writeGradeOverlay');if(overlay)overlay.hidden=true;const progress=$('writeProgress');if(progress)progress.hidden=true;const done=$('writeGradeDone');if(done)done.hidden=true;const btn=$('writeGrade');if(btn)btn.disabled=false}
 function updateWriteProgress(value,label){const n=Math.max(0,Math.min(100,value));$('writeProgressPercent').textContent=n+'%';$('writeProgressFill').style.width=n+'%';$('writeProgressBar').setAttribute('aria-valuenow',String(n));$('writeProgressLabel').textContent=label}
 function gradeHandwriting(){
-const feedback=$('writeFeedback'),scoreEl=$('writeScore'),advice=$('writeAdvice'),meter=$('writeMeter');feedback.hidden=false;
+const feedback=$('writeFeedback'),scoreEl=$('writeScore'),advice=$('writeAdvice'),meter=$('writeMeter');feedback.hidden=false;$('writeCriteria').replaceChildren();
 if(!strokes.length){scoreEl.textContent='Chưa có nét viết';advice.textContent='Hãy viết chữ Hán trước khi chấm.';meter.style.width='0%';return}
 const size=128,canvas=()=>{const c=document.createElement('canvas');c.width=c.height=size;return c};
 const ink=canvas(),ctx=ink.getContext('2d');if(!ctx)throw Error('Canvas không khả dụng');
@@ -102,9 +102,17 @@ const expandedU=dilate(maskU),expandedT=dilate(maskT);let matchedU=0,matchedT=0;
 for(let i=0;i<maskU.length;i++){if(maskU[i]&&expandedT[i])matchedU++;if(maskT[i]&&expandedU[i])matchedT++}
 const precision=matchedU/Math.max(1,nu),recall=matchedT/Math.max(1,nt),f1=2*precision*recall/Math.max(.0001,precision+recall);
 const ratioA=(a.x1-a.x0+1)/Math.max(1,a.y1-a.y0+1),ratioB=(b.x1-b.x0+1)/Math.max(1,b.y1-b.y0+1);
-const score=Math.round(Math.max(0,Math.min(100,100*f1*Math.max(.65,1-.16*Math.abs(Math.log(ratioA/ratioB))))));
+const clamp=n=>Math.max(0,Math.min(1,n));
+const shape=clamp(f1),completeness=clamp(recall);
+const proportion=clamp(1-Math.abs(Math.log(ratioA/ratioB))*.65);
+const density=clamp(1-Math.abs(Math.log(Math.max(.001,nu)/Math.max(1,nt)))*.42);
+const rubric=[{name:'Độ giống chữ mẫu',max:50,ratio:shape},{name:'Độ đầy đủ của nét',max:20,ratio:completeness},{name:'Tỷ lệ và bố cục',max:15,ratio:proportion},{name:'Độ cân đối, phân bố nét',max:15,ratio:density}];
+let score=0;const criteria=$('writeCriteria');criteria.replaceChildren();
+for(const item of rubric){const points=Math.round(item.max*item.ratio);score+=points;const row=document.createElement('div');row.className='write-criterion';const top=document.createElement('div');top.className='write-criterion-head';const label=document.createElement('span');label.textContent=item.name;const value=document.createElement('strong');value.textContent=points+'/'+item.max;top.append(label,value);const track=document.createElement('div');track.className='write-criterion-track';const fill=document.createElement('span');fill.style.width=Math.round(item.ratio*100)+'%';track.append(fill);row.append(top,track);criteria.append(row)}
 scoreEl.textContent=score+'/100 điểm · '+(score>=85?'Rất tốt':score>=65?'Khá giống':score>=40?'Cần luyện thêm':'Chưa giống chữ mẫu');
-advice.textContent=score>=85?'Bố cục khá sát chữ mẫu. Hãy tiếp tục luyện từ mới.':score>=65?'Hãy chú ý độ dài và khoảng cách các nét.':score>=40?'Hãy cân đối hình dạng chữ và viết chậm hơn.':'Quan sát chữ mẫu và viết lại đầy đủ các nét.';
+const weakest=rubric.reduce((a,b)=>a.ratio<b.ratio?a:b);
+const tips={'Độ giống chữ mẫu':'Hãy quan sát kỹ hình dạng tổng thể và viết lại theo chữ mẫu.','Độ đầy đủ của nét':'Bạn nên bổ sung các nét còn thiếu và tránh viết quá ngắn.','Tỷ lệ và bố cục':'Hãy chú ý chiều cao, chiều rộng và tỷ lệ của chữ.','Độ cân đối, phân bố nét':'Hãy phân bố các nét đều hơn, tránh dồn nét vào một vùng.'};
+advice.textContent=score>=85?'Hình dạng khá sát chữ mẫu. Tiếp tục luyện để ổn định nét viết.':'Cần cải thiện: '+weakest.name+'. '+tips[weakest.name];
 meter.style.width=score+'%';
 }
 function renderSpeak(){if(!state.words.length)return;const w=skillAt(speakIndex);$('speakWord').textContent=w.hanzi;$('speakMeaning').textContent=w.pinyin+' · '+w.vi.join(' / ');$('speakCount').textContent=(speakIndex%state.words.length+1)+'/'+state.words.length;$('speakStatus').textContent='Sẵn sàng luyện nói';$('speakText').textContent='Nội dung nhận dạng sẽ hiển thị ở đây.'}
