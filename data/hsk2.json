@@ -1,0 +1,122 @@
+[
+  {
+    "hanzi": "因为",
+    "pinyin": "yīn wèi",
+    "vi": [
+      "bởi vì"
+    ],
+    "category": "Liên từ"
+  },
+  {
+    "hanzi": "所以",
+    "pinyin": "suǒ yǐ",
+    "vi": [
+      "cho nên"
+    ],
+    "category": "Liên từ"
+  },
+  {
+    "hanzi": "觉得",
+    "pinyin": "jué de",
+    "vi": [
+      "cảm thấy"
+    ],
+    "category": "Động từ"
+  },
+  {
+    "hanzi": "已经",
+    "pinyin": "yǐ jīng",
+    "vi": [
+      "đã"
+    ],
+    "category": "Trạng từ"
+  },
+  {
+    "hanzi": "可能",
+    "pinyin": "kě néng",
+    "vi": [
+      "có thể"
+    ],
+    "category": "Trạng từ"
+  },
+  {
+    "hanzi": "开始",
+    "pinyin": "kāi shǐ",
+    "vi": [
+      "bắt đầu"
+    ],
+    "category": "Động từ"
+  },
+  {
+    "hanzi": "结束",
+    "pinyin": "jié shù",
+    "vi": [
+      "kết thúc"
+    ],
+    "category": "Động từ"
+  },
+  {
+    "hanzi": "帮助",
+    "pinyin": "bāng zhù",
+    "vi": [
+      "giúp đỡ"
+    ],
+    "category": "Động từ"
+  },
+  {
+    "hanzi": "问题",
+    "pinyin": "wèn tí",
+    "vi": [
+      "vấn đề"
+    ],
+    "category": "Danh từ"
+  },
+  {
+    "hanzi": "时间",
+    "pinyin": "shí jiān",
+    "vi": [
+      "thời gian"
+    ],
+    "category": "Danh từ"
+  },
+  {
+    "hanzi": "运动",
+    "pinyin": "yùn dòng",
+    "vi": [
+      "vận động"
+    ],
+    "category": "Động từ"
+  },
+  {
+    "hanzi": "旅游",
+    "pinyin": "lǚ yóu",
+    "vi": [
+      "du lịch"
+    ],
+    "category": "Động từ"
+  },
+  {
+    "hanzi": "便宜",
+    "pinyin": "pián yi",
+    "vi": [
+      "rẻ"
+    ],
+    "category": "Tính từ"
+  },
+  {
+    "hanzi": "贵",
+    "pinyin": "guì",
+    "vi": [
+      "đắt"
+    ],
+    "category": "Tính từ"
+  },
+  {
+    "hanzi": "旁边",
+    "pinyin": "páng biān",
+    "vi": [
+      "bên cạnh"
+    ],
+    "category": "Danh từ"
+  }
+]
