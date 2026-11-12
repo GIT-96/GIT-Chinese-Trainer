@@ -48,3 +48,30 @@ input:focus{outline:2px solid #4b9aff;outline-offset:1px}
 .bottom-nav{background:#fff;border-top:1px solid #e0eaf7;box-shadow:0 -3px 16px #246db00b}
 .bottom-nav button.active{color:#056be9}
 @media(max-width:420px){.page{padding:13px 12px 22px}.page-heading{margin:-13px -12px 14px}.brand strong{font-size:16px}.feature{min-height:105px}.feature strong{font-size:12px}}
+
+/* V4 — unified blue navigation and Lucide icon system */
+:root{--nav-blue:#0866d8;--nav-blue-dark:#0757c4;--nav-white:#fff}
+.top,.page-heading{background:linear-gradient(115deg,var(--nav-blue-dark),var(--nav-blue))!important;color:var(--nav-white)}
+.bottom-nav{background:linear-gradient(115deg,var(--nav-blue-dark),var(--nav-blue))!important;border-top:0;box-shadow:0 -4px 16px #075acb2c}
+.bottom-nav button{color:#d7e9ff;font-size:10px;gap:5px}
+.bottom-nav button.active{color:#fff;background:#ffffff26;border-radius:12px}
+.bottom-nav button span{font-size:initial;display:grid;place-items:center;height:28px}
+.bottom-nav svg{width:22px;height:22px;stroke-width:2}
+.brand-mark{width:44px;height:44px;display:grid;place-items:center;background:#ffffff26;border:1px solid #ffffff55;border-radius:14px;flex-shrink:0}
+.brand-mark svg{width:27px;height:27px}
+.icon-btn{display:grid;place-items:center;width:43px;height:43px;padding:0}
+.icon-btn svg{width:21px;height:21px}
+.feature-icon svg{width:27px;height:27px}
+.metrics .card>span svg{width:24px;height:24px;color:#0875ec}
+.page-heading .back{display:grid;place-items:center;width:35px;height:35px;padding:0}
+.page-heading .back svg{width:24px;height:24px}
+button svg{vertical-align:middle;display:inline-block;width:18px;height:18px;flex-shrink:0}
+.round-play{display:grid;place-items:center}
+.round-play svg{width:20px;height:20px}
+.searchbox>svg{width:20px;height:20px;flex-shrink:0;color:#5482bb}
+.robot{width:48px;height:48px;display:grid;place-items:center;border-radius:16px;background:#d9eaff;color:#0866d8}
+.robot svg{width:30px;height:30px}
+.send{display:grid;place-items:center}
+.send svg{width:21px;height:21px}
+.vocab-item button{display:grid;place-items:center}
+.vocab-item button svg{width:20px;height:20px}
