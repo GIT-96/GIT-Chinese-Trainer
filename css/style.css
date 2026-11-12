@@ -560,3 +560,11 @@ html,body{width:100%;max-width:100%;overflow-x:hidden}
 .write-grade-dialog .write-feedback{text-align:left;margin-top:12px}
 .write-grade-dialog .write-feedback strong{font-size:19px}
 .write-grade-done{display:block;width:100%;margin-top:16px;border:0;border-radius:12px;background:#0876ed;color:#fff;padding:13px;font-weight:700;font-size:14px}
+
+/* V22: handwriting rubric breakdown */
+.write-criteria{display:flex;flex-direction:column;gap:12px;margin:18px 0 4px;text-align:left}
+.write-criterion-head{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:#46617d;margin-bottom:6px}
+.write-criterion-head strong{color:#126dc8;font-variant-numeric:tabular-nums;white-space:nowrap}
+.write-criterion-track{height:7px;background:#e3edf8;border-radius:99px;overflow:hidden}
+.write-criterion-track span{display:block;height:100%;background:linear-gradient(90deg,#1682eb,#13b99b);border-radius:99px;transition:width .35s ease}
+.write-criteria-note{font-size:10px!important;color:#8a9caf!important;line-height:1.45;margin:12px 0 0!important}
