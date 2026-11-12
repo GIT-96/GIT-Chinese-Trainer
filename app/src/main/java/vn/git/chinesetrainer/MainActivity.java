@@ -15,7 +15,6 @@ import android.net.Uri;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
-import androidx.annotation.NonNull;
 public class MainActivity extends Activity {
  private WebView web; private PermissionRequest pendingMic; private GeolocationPermissions.Callback pendingGeo; private String pendingGeoOrigin;
  private static final int MIC=101, GEO=102;
@@ -28,7 +27,7 @@ public class MainActivity extends Activity {
  });
  web.loadUrl("https://git-96.github.io/GIT-Chinese-Trainer/?v=25");
  }
- @Override public void onRequestPermissionsResult(int code,@NonNull String[] permissions,@NonNull int[] results){super.onRequestPermissionsResult(code,permissions,results);boolean ok=results.length>0&&results[0]==PackageManager.PERMISSION_GRANTED;if(code==MIC&&pendingMic!=null){if(ok)pendingMic.grant(new String[]{PermissionRequest.RESOURCE_AUDIO_CAPTURE});else pendingMic.deny();pendingMic=null;}if(code==GEO&&pendingGeo!=null){boolean allowed=false;for(int x:results)if(x==PackageManager.PERMISSION_GRANTED)allowed=true;pendingGeo.invoke(pendingGeoOrigin,allowed,false);pendingGeo=null;}}
+ @Override public void onRequestPermissionsResult(int code,String[] permissions,int[] results){super.onRequestPermissionsResult(code,permissions,results);boolean ok=results.length>0&&results[0]==PackageManager.PERMISSION_GRANTED;if(code==MIC&&pendingMic!=null){if(ok)pendingMic.grant(new String[]{PermissionRequest.RESOURCE_AUDIO_CAPTURE});else pendingMic.deny();pendingMic=null;}if(code==GEO&&pendingGeo!=null){boolean allowed=false;for(int x:results)if(x==PackageManager.PERMISSION_GRANTED)allowed=true;pendingGeo.invoke(pendingGeoOrigin,allowed,false);pendingGeo=null;}}
  @Override public void onBackPressed(){if(web.canGoBack())web.goBack();else super.onBackPressed();}
  @Override protected void onDestroy(){web.destroy();super.onDestroy();}
 }
