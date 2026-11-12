@@ -344,3 +344,42 @@ html,body{width:100%;max-width:100%;overflow-x:hidden}
 .top .icon-btn{flex:0 0 auto!important}
 @media(min-width:521px){.top{left:50%!important;right:auto!important;transform:translateX(-50%)!important}}
 @media(max-width:360px){.top{padding-left:10px!important;padding-right:10px!important}.top .brand-label strong{font-size:14px!important}.top .brand-label small{font-size:9px!important}}
+
+/* V12 — left slide-out navigation, maximum usable mobile height */
+:root{--gct-header-height:58px}
+.shell{padding-top:var(--gct-header-height)!important;padding-bottom:0!important}
+.top{height:var(--gct-header-height)!important;min-height:var(--gct-header-height)!important;padding:7px 12px!important;gap:9px!important}
+.top .brand{gap:0!important}
+.top .brand-mark{display:none!important}
+.top .brand-label strong{font-size:15px!important}
+.top .brand-label small{font-size:10px!important}
+.top .icon-btn{padding:7px 9px!important;border-radius:11px!important}
+.top .icon-btn svg{width:20px;height:20px}
+.menu-toggle{display:grid;place-items:center;flex:0 0 39px;width:39px;height:39px;padding:0;border:1px solid #ffffff60;background:#ffffff20;border-radius:11px;color:#fff}
+.menu-toggle svg{width:23px;height:23px}
+.bottom-nav{display:none!important}
+.page,#practice.page,#review.page,#stats.page{padding-bottom:calc(24px + env(safe-area-inset-bottom))!important}
+#practice #next{scroll-margin-bottom:24px}
+.drawer-backdrop{position:fixed;inset:0;z-index:79;background:rgba(11,30,56,.44);backdrop-filter:blur(2px)}
+.drawer-backdrop[hidden]{display:none!important}
+.app-drawer{position:fixed;z-index:80;top:0;bottom:0;left:0;width:min(310px,86vw);background:#fff;box-shadow:14px 0 36px #092b5350;transform:translateX(-105%);transition:transform .22s ease;display:flex;flex-direction:column;padding:calc(15px + env(safe-area-inset-top)) 12px calc(14px + env(safe-area-inset-bottom));visibility:hidden}
+.app-drawer.is-open{transform:translateX(0);visibility:visible}
+.drawer-heading{display:flex;align-items:center;gap:10px;padding:6px 5px 18px;border-bottom:1px solid #e5eef8}
+.drawer-heading>div{flex:1;min-width:0}
+.drawer-heading strong{display:block;font-size:14px;color:#173657}
+.drawer-heading small{display:block;font-size:10px;color:#7890a9;margin-top:3px}
+.drawer-logo{display:grid;place-items:center;width:39px;height:39px;background:#e9f3ff;color:#0969d8;border-radius:12px}
+.drawer-logo svg{width:23px;height:23px}
+#menuClose{display:grid;place-items:center;border:0;background:#f0f5fb;color:#54708e;border-radius:10px;width:34px;height:34px;padding:0}
+#menuClose svg{width:18px;height:18px}
+.drawer-section-title{padding:23px 13px 9px;color:#8a9bb1;font-size:10px;font-weight:800;letter-spacing:1.3px}
+.drawer-links{display:flex;flex-direction:column;gap:4px;overflow:auto}
+.drawer-links button{width:100%;display:flex;align-items:center;gap:12px;text-align:left;background:transparent;color:#395470;border:0;border-radius:12px;min-height:47px;padding:10px 12px;font-size:13px;font-weight:600}
+.drawer-links button>svg:first-child{width:19px;height:19px;color:#257bd3;flex-shrink:0}
+.drawer-links button span{flex:1}
+.drawer-links button>svg:last-child{width:15px;height:15px;color:#a2b3c6}
+.drawer-links button.active{background:#eaf4ff;color:#0869d2}
+.drawer-links button:focus-visible,.menu-toggle:focus-visible{outline:3px solid #77b8ff;outline-offset:2px}
+.drawer-footer{margin-top:auto;border-top:1px solid #e6edf7;padding:14px 9px 0;color:#91a0b3;font-size:11px}
+@media(min-width:521px){.app-drawer{left:max(0px,calc((100vw - 520px)/2))}.drawer-backdrop{inset:0}}
+@media(prefers-reduced-motion:reduce){.app-drawer{transition:none}}
