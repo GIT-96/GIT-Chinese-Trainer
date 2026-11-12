@@ -160,3 +160,51 @@ html,body{min-height:100%;background:#f8fbff}
 #ai .ai-settings summary span{font-size:10px}
 #ai .ai-settings[open]{margin-bottom:12px}
 @media(max-width:380px){.weather-card{padding:12px!important}.weather-temp{font-size:39px!important}.weather-art{width:68px!important;height:68px!important}.weather-art svg{width:46px!important}.weather-bottom{font-size:10px!important}}
+
+/* V7 – clean weather dashboard and conversation-first AI layout */
+#home .weather-card{position:relative;isolation:isolate;display:block!important;overflow:hidden!important;background:linear-gradient(135deg,#0758bd 0%,#1685e5 60%,#6bc6f3 100%)!important;border:0!important;border-radius:23px!important;padding:17px!important;color:#fff!important;box-shadow:0 12px 25px rgba(9,99,190,.18)!important;margin:0 0 15px!important}
+#home .weather-card:before{content:"";position:absolute;width:210px;height:210px;right:-70px;top:25px;background:radial-gradient(circle,#ffffff34,transparent 68%);pointer-events:none;z-index:-1}
+#home .weather-top{display:flex!important;justify-content:space-between!important;align-items:center!important;gap:10px!important}
+#home .weather-location{display:flex!important;align-items:center!important;gap:9px!important;color:#fff!important;font-size:14px!important}
+#home .weather-location-dot{display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:#ffffff25}
+#home .weather-location-dot svg{width:18px;height:18px}
+#home .weather-location small{display:block;color:#d7edff;font-size:9px;font-weight:650;letter-spacing:.8px}
+#home .weather-location strong{display:block;font-size:15px;font-weight:700;margin-top:3px;color:#fff}
+#home .weather-locate{display:flex!important;align-items:center!important;gap:6px!important;border:1px solid #ffffff6b!important;background:#ffffff25!important;color:#fff!important;padding:8px 11px!important;border-radius:12px!important;font-size:11px!important}
+#home .weather-locate svg{width:15px;height:15px}
+#home .weather-main{display:flex!important;align-items:center!important;justify-content:space-between!important;min-height:132px!important;padding:15px 0 10px!important}
+#home .weather-temp{font-size:60px!important;font-weight:750!important;line-height:1!important;letter-spacing:-3px!important;color:#fff!important}
+#home .weather-desc{color:#fff!important;font-size:15px!important;margin-top:7px!important}
+#home .weather-feels{color:#dcefff!important;font-size:11px!important;margin-top:5px!important}
+#home .weather-art{display:grid!important;place-items:center!important;width:106px!important;height:106px!important;border-radius:50%!important;background:#ffffff1d!important;box-shadow:inset 0 0 0 1px #ffffff24!important}
+#home .weather-art svg{width:71px!important;height:71px!important;color:#fff!important;stroke-width:1.35!important}
+#home .weather-bottom{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:6px!important;border-top:1px solid #ffffff40!important;padding:12px 0 0!important;color:#f3faff!important;font-size:11px!important}
+#home .weather-bottom span{display:inline-flex!important;align-items:center!important;gap:5px!important}
+#home .weather-bottom svg{width:15px;height:15px}
+#home .weather-controls{display:flex!important;align-items:center!important;gap:8px!important;justify-content:flex-end!important;margin-top:13px!important;padding-top:10px!important;border-top:1px solid #ffffff2c!important}
+#home .weather-controls label{color:#d9edff!important;font-size:11px!important;margin:0 auto 0 0!important}
+#home .weather-controls select{background:#ffffffeb!important;color:#124c83!important;border:0!important;border-radius:10px!important;padding:8px 10px!important;max-width:59%!important;min-width:0!important;font-size:12px!important}
+#home .weather-controls button{display:grid!important;place-items:center!important;width:35px!important;height:35px!important;flex-shrink:0!important;background:#ffffff2c!important;border:1px solid #ffffff55!important;border-radius:10px!important;color:#fff!important}
+#ai.page{display:flex!important;flex-direction:column!important;gap:0!important;height:calc(100dvh - 150px)!important;min-height:360px!important;padding:12px 13px 10px!important;overflow:hidden!important;background:#f7faff!important}
+#ai.page[hidden]{display:none!important}
+#ai .ai-hero{display:flex!important;align-items:center!important;gap:11px!important;padding:13px!important;border:1px solid #e0eaf8!important;border-radius:17px!important;background:#fff!important;box-shadow:0 3px 13px #1d5c9e0a!important}
+#ai .ai-hero-avatar{display:grid!important;place-items:center!important;flex-shrink:0!important;width:47px!important;height:47px!important;border-radius:14px!important;background:linear-gradient(140deg,#0b70e5,#45a7ff)!important;color:#fff!important}
+#ai .ai-hero-avatar svg{width:27px;height:27px}
+#ai .ai-hero strong{font-size:15px!important;color:#163657!important;display:flex;align-items:center;gap:7px}
+#ai .ai-online-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#1dbb8a}
+#ai .ai-hero p{font-size:11px!important;margin:3px 0 5px!important;line-height:1.4!important;color:#6a809b!important}
+#ai .ai-mode{font-size:10px!important;background:#eaf4ff!important;color:#0c6cc6!important;padding:4px 8px!important}
+#ai .ai-suggestions{display:flex!important;gap:7px!important;overflow-x:auto!important;flex-shrink:0!important;padding:13px 0 9px!important}
+#ai .ai-suggestions button{display:inline-flex!important;align-items:center!important;gap:5px!important;padding:8px 11px!important;border-radius:11px!important;border:1px solid #d8e7f7!important;background:#fff!important;color:#2a5d92!important;font-size:11px!important}
+#ai .chat{flex:1 1 auto!important;min-height:0!important;max-height:none!important;overflow-y:auto!important;padding:10px 2px 14px!important;gap:12px!important;scrollbar-width:thin}
+#ai .bubble{max-width:88%!important;border-radius:17px!important;padding:12px 14px!important;line-height:1.6!important;font-size:13px!important;box-shadow:none!important}
+#ai .bubble.bot{background:#fff!important;border:1px solid #e0eaf7!important;color:#28435e!important;border-bottom-left-radius:5px!important}
+#ai .bubble.user{background:#0876ed!important;color:#fff!important;border-bottom-right-radius:5px!important}
+#ai .chat-form{display:flex!important;align-items:center!important;gap:8px!important;flex-shrink:0!important;padding:10px 0 8px!important;margin:0!important;border-top:1px solid #e3edf8!important}
+#ai .chat-form input{flex:1!important;min-width:0!important;height:46px!important;border:1px solid #d6e4f5!important;border-radius:13px!important;background:#fff!important;font-size:13px!important}
+#ai .send{display:grid!important;place-items:center!important;flex-shrink:0!important;width:46px!important;height:46px!important;border-radius:13px!important;background:#0876ed!important}
+#ai .send svg{width:20px;height:20px}
+#ai .ai-settings{flex-shrink:0!important;margin:0!important;padding:9px 12px!important;border:1px solid #e3eaf4!important;border-radius:12px!important;box-shadow:none!important;background:#fff!important}
+#ai .ai-settings summary{font-size:11px!important;color:#4c6683!important}
+#ai .ai-settings summary span{font-size:10px!important}
+@media(max-width:380px){#home .weather-temp{font-size:51px!important}#home .weather-art{width:82px!important;height:82px!important}#home .weather-art svg{width:55px!important;height:55px!important}#ai .ai-hero p{font-size:10px!important}}
