@@ -241,3 +241,71 @@ html,body{min-height:100%;background:#f8fbff}
 #home .metrics small{font-size:10px!important}
 #home .section-title{margin:10px 0!important}
 @media(max-width:380px){#home .weather-temp{font-size:37px!important}#home .weather-art{width:54px!important;height:54px!important}#home .weather-art svg{width:36px!important;height:36px!important}#home .weather-bottom{font-size:9px!important}}
+
+/* V9 professional learning / review / analytics */
+#practice.page,#review.page,#stats.page{padding:12px 13px 20px!important}
+#practice .practice-card{padding:15px!important;border-radius:19px!important}
+#practice .track{margin-top:11px!important;height:7px!important}
+#practice .mode-bar{margin:13px 0!important;gap:8px!important}
+#practice .mode-bar select,#practice .mode-bar button{min-height:42px!important;padding:9px 11px!important;font-size:12px!important;border-radius:11px!important}
+#practice .mode-bar button{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:5px!important;white-space:nowrap!important}
+#practice .mode-bar button svg{width:15px;height:15px}
+#practice .prompt-card{padding:17px 12px!important;margin-bottom:14px!important;border:1px solid #dbeaf9!important;background:linear-gradient(135deg,#f1f8ff,#e8f3ff)!important;border-radius:16px!important}
+#practice .prompt-accent{display:flex;align-items:center;justify-content:center;gap:5px;color:#1474d3;font-size:9px;font-weight:750;letter-spacing:1px;margin-bottom:7px}
+#practice .prompt-accent svg{width:13px;height:13px}
+#practice .eyebrow{font-size:11px!important}
+#practice .prompt{font-size:29px!important;line-height:1.2!important;margin:9px 0!important}
+#practice #questionExtra{font-size:11px!important}
+#practice #answerForm label{font-size:12px!important;margin-bottom:6px!important}
+#practice #answer{padding:11px 13px!important;min-height:45px!important;font-size:17px!important}
+#practice .audio-actions{margin:9px 0!important;gap:8px!important}
+#practice .audio-actions button{display:flex;align-items:center;justify-content:center;gap:6px;min-height:42px;padding:9px 6px!important;font-size:12px!important}
+#practice .audio-actions svg{width:16px;height:16px}
+#practice .primary{min-height:45px!important;padding:11px!important;margin-top:7px!important}
+#practice .feedback{font-size:12px!important;padding:12px!important;margin-top:10px!important;line-height:1.6!important}
+#practice #next{margin-top:10px!important}
+#review .review-panel{padding:17px!important;border-radius:19px!important}
+#review .review-head{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+#review .review-symbol{display:grid;place-items:center;flex-shrink:0;width:40px;height:40px;border-radius:13px;background:#e9f3ff;color:#0876e8}
+#review .review-symbol svg{width:22px;height:22px}
+#review .review-head>div{flex:1;min-width:0}
+#review .review-head strong{font-size:14px}
+#review .review-head p{font-size:10px;margin:4px 0 0}
+#review .review-count{font-size:10px;color:#0874e7;background:#eaf3ff;border-radius:999px;padding:6px 8px;white-space:nowrap}
+#review .review-empty{text-align:center;padding:20px 10px 16px;background:#f5f9ff;border:1px dashed #cbdff5;border-radius:16px}
+#review .empty-icon{display:grid;place-items:center;width:49px;height:49px;border-radius:16px;margin:0 auto 10px;background:#e1f7ef;color:#0fa875}
+#review .empty-icon svg{width:25px;height:25px}
+#review .review-empty strong{display:block;font-size:14px}
+#review .review-empty p{max-width:270px;margin:7px auto 0;font-size:11px;line-height:1.55;color:#71839b}
+#review .review-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:13px}
+#review .review-actions button{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;min-height:42px;margin:0!important;padding:9px 5px!important;border-radius:11px;font-size:11px}
+#review .review-actions svg{width:14px;height:14px}
+#stats .stat-switch{margin:0 0 12px!important;gap:7px!important}
+#stats .stat-switch button{padding:9px 13px!important;font-size:12px!important}
+#stats .metrics{gap:8px!important}
+#stats .metrics .card{padding:11px 4px!important;gap:4px!important}
+#stats .metrics .card svg{width:20px;height:20px}
+#stats .metrics strong{font-size:21px!important}
+#stats .metrics small{font-size:10px!important}
+#stats .chart-card{margin-top:12px!important;padding:15px!important;border-radius:18px!important}
+#stats .chart-heading{display:flex;align-items:center;justify-content:space-between;gap:8px}
+#stats .chart-heading strong{font-size:14px}
+#stats .chart-heading small{display:block;color:#8393a8;font-size:10px;margin-top:3px}
+#stats .chart-indicator{display:inline-flex;align-items:center;gap:4px;background:#eaf4ff;color:#1676dc;padding:6px 8px;border-radius:999px;font-size:10px;white-space:nowrap}
+#stats .chart-indicator svg{width:12px;height:12px}
+#stats .bars{height:116px!important;margin-top:14px!important;gap:6px!important}
+#stats .bars div{position:relative;width:10%!important;max-width:38px!important;min-height:0!important;border-radius:5px 5px 0 0!important}
+#stats .bars div[data-count="0"]{background:#e9f0f9!important;height:3px!important}
+#stats .chart-labels{margin:7px 0 9px!important;font-size:10px!important}
+#stats .chart-footnote{font-size:10px!important;line-height:1.5!important}
+#stats .result-panel{padding:15px!important;margin-top:12px!important;border-radius:18px!important}
+#stats .result-summary{display:flex;align-items:center;justify-content:space-evenly;gap:12px;margin-top:10px}
+#stats .result-circle{width:112px!important;height:112px!important;margin:6px!important;border-width:9px!important;flex-shrink:0!important}
+#stats .result-circle strong{font-size:23px!important}
+#stats .result-legend{display:flex;flex-direction:column;gap:12px;font-size:12px;min-width:95px}
+#stats .result-legend span{display:flex;align-items:center;gap:7px}
+#stats .result-legend b{margin-left:auto}
+#stats .legend-dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+#stats .legend-dot.right{background:#18b778}
+#stats .legend-dot.wrong{background:#f06b71}
+@media(max-width:370px){#review .review-actions{grid-template-columns:1fr}#stats .chart-indicator{font-size:9px}#practice .prompt{font-size:25px!important}}
