@@ -568,3 +568,21 @@ html,body{width:100%;max-width:100%;overflow-x:hidden}
 .write-criterion-track{height:7px;background:#e3edf8;border-radius:99px;overflow:hidden}
 .write-criterion-track span{display:block;height:100%;background:linear-gradient(90deg,#1682eb,#13b99b);border-radius:99px;transition:width .35s ease}
 .write-criteria-note{font-size:10px!important;color:#8a9caf!important;line-height:1.45;margin:12px 0 0!important}
+
+/* V23 detailed grading explanations */
+.write-breakdown-heading{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:16px 0 9px;text-align:left}
+.write-breakdown-heading>strong{font-size:13px!important;color:#1c4c79}
+.write-breakdown-heading small{font-size:10px;color:#7e93a9;text-align:right}
+.write-criteria{gap:9px;margin:0 0 4px}
+.write-criterion{border:1px solid #dceaf8;border-radius:12px;background:#fff;overflow:hidden}
+.write-criterion[open]{background:#f9fcff}
+.write-criterion-head{padding:12px;cursor:pointer;list-style:none;align-items:center;margin:0}
+.write-criterion-head::-webkit-details-marker{display:none}
+.write-criterion-head span{font-weight:650;color:#244f78}
+.write-criterion-head strong{font-size:12px}
+.write-criterion-body{padding:0 12px 13px;text-align:left}
+.write-criterion-measure{font-size:11px;font-weight:650;color:#176cc3;margin:8px 0}
+.write-criterion-body p{font-size:11px;line-height:1.55;color:#667f97;margin:7px 0}
+.write-criterion-body .write-criterion-advice{color:#285f8c;background:#eaf4ff;padding:9px 10px;border-radius:9px;margin-top:9px}
+.write-grade-dialog{max-height:86dvh;overflow-y:auto;scrollbar-width:none}
+.write-grade-dialog::-webkit-scrollbar{display:none}
