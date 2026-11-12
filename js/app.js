@@ -107,10 +107,10 @@ const shape=clamp(f1),completeness=clamp(recall);
 const proportion=clamp(1-Math.abs(Math.log(ratioA/ratioB))*.65);
 const density=clamp(1-Math.abs(Math.log(Math.max(.001,nu)/Math.max(1,nt)))*.42);
 const rubric=[
-{name:'Độ giống chữ mẫu',max:50,ratio:shape,description:'So sánh mức trùng khớp của hình dạng nét viết và chữ mẫu sau khi chuẩn hóa kích thước.',measure:'Mức khớp hình dạng',good:'Đường nét tương đối sát hình dạng chữ mẫu.',bad:'Các đường nét còn lệch so với chữ mẫu. Hãy quan sát từng phần của chữ và viết lại.'},
-{name:'Độ đầy đủ của nét',max:20,ratio:completeness,description:'Ước tính tỷ lệ vùng nét của chữ mẫu được nét viết của bạn bao phủ.',measure:'Mức bao phủ chữ mẫu',good:'Phần lớn vùng nét mẫu đã được thể hiện.',bad:'Một số vùng nét mẫu chưa được bao phủ. Hãy kiểm tra các nét còn thiếu hoặc quá ngắn.'},
-{name:'Tỷ lệ và bố cục',max:15,ratio:proportion,description:'So sánh tỷ lệ chiều rộng và chiều cao của toàn bộ chữ viết với chữ mẫu.',measure:'Mức phù hợp tỷ lệ',good:'Tỷ lệ ngang và dọc tương đối cân đối.',bad:'Chữ có thể đang quá rộng hoặc quá cao so với mẫu. Hãy điều chỉnh tỷ lệ.'},
-{name:'Độ cân đối, phân bố nét',max:15,ratio:density,description:'Ước tính độ tương đồng về mật độ vùng mực sau khi chuẩn hóa. Đây không phải phép đo chính xác vị trí từng nét.',measure:'Mức tương đồng mật độ nét',good:'Mật độ nét tương đối gần chữ mẫu.',bad:'Mật độ nét khác chữ mẫu. Hãy tránh tô đậm quá nhiều hoặc viết nét quá mảnh.'}
+{name:'Giống mẫu',max:50,ratio:shape,description:'So sánh mức trùng khớp của hình dạng nét viết và chữ mẫu sau khi chuẩn hóa kích thước.',measure:'Mức khớp hình dạng',good:'Đường nét tương đối sát hình dạng chữ mẫu.',bad:'Các đường nét còn lệch so với chữ mẫu. Hãy quan sát từng phần của chữ và viết lại.'},
+{name:'Đủ nét',max:20,ratio:completeness,description:'Ước tính tỷ lệ vùng nét của chữ mẫu được nét viết của bạn bao phủ.',measure:'Mức bao phủ chữ mẫu',good:'Phần lớn vùng nét mẫu đã được thể hiện.',bad:'Một số vùng nét mẫu chưa được bao phủ. Hãy kiểm tra các nét còn thiếu hoặc quá ngắn.'},
+{name:'Bố cục',max:15,ratio:proportion,description:'So sánh tỷ lệ chiều rộng và chiều cao của toàn bộ chữ viết với chữ mẫu.',measure:'Mức phù hợp tỷ lệ',good:'Tỷ lệ ngang và dọc tương đối cân đối.',bad:'Chữ có thể đang quá rộng hoặc quá cao so với mẫu. Hãy điều chỉnh tỷ lệ.'},
+{name:'Cân đối',max:15,ratio:density,description:'Ước tính độ tương đồng về mật độ vùng mực sau khi chuẩn hóa. Đây không phải phép đo chính xác vị trí từng nét.',measure:'Mức tương đồng mật độ nét',good:'Mật độ nét tương đối gần chữ mẫu.',bad:'Mật độ nét khác chữ mẫu. Hãy tránh tô đậm quá nhiều hoặc viết nét quá mảnh.'}
 ];
 let score=0;const criteria=$('writeCriteria');criteria.replaceChildren();
 for(const item of rubric){
@@ -130,7 +130,7 @@ body.append(track,measure,description,adviceText);details.append(summary,body);c
 }
 scoreEl.textContent=score+'/100 điểm · '+(score>=85?'Rất tốt':score>=65?'Khá giống':score>=40?'Cần luyện thêm':'Chưa giống chữ mẫu');
 const weakest=rubric.reduce((a,b)=>a.ratio<b.ratio?a:b);
-const tips={'Độ giống chữ mẫu':'Hãy quan sát kỹ hình dạng tổng thể và viết lại theo chữ mẫu.','Độ đầy đủ của nét':'Bạn nên bổ sung các nét còn thiếu và tránh viết quá ngắn.','Tỷ lệ và bố cục':'Hãy chú ý chiều cao, chiều rộng và tỷ lệ của chữ.','Độ cân đối, phân bố nét':'Hãy phân bố các nét đều hơn, tránh dồn nét vào một vùng.'};
+const tips={'Giống mẫu':'Hãy quan sát kỹ hình dạng tổng thể và viết lại theo chữ mẫu.','Đủ nét':'Bạn nên bổ sung các nét còn thiếu và tránh viết quá ngắn.','Bố cục':'Hãy chú ý chiều cao, chiều rộng và tỷ lệ của chữ.','Cân đối':'Hãy phân bố các nét đều hơn, tránh dồn nét vào một vùng.'};
 advice.textContent=score>=85?'Hình dạng khá sát chữ mẫu. Tiếp tục luyện để ổn định nét viết.':'Cần cải thiện: '+weakest.name+'. '+tips[weakest.name];
 meter.style.width=score+'%';
 }
