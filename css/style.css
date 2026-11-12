@@ -208,3 +208,36 @@ html,body{min-height:100%;background:#f8fbff}
 #ai .ai-settings summary{font-size:11px!important;color:#4c6683!important}
 #ai .ai-settings summary span{font-size:10px!important}
 @media(max-width:380px){#home .weather-temp{font-size:51px!important}#home .weather-art{width:82px!important;height:82px!important}#home .weather-art svg{width:55px!important;height:55px!important}#ai .ai-hero p{font-size:10px!important}}
+
+/* V8 Weather Compact — prioritize learning content above the fold */
+#home .weather-card{padding:12px 14px!important;border-radius:17px!important;margin-bottom:10px!important;box-shadow:0 5px 15px #0963be20!important}
+#home .weather-top{gap:7px!important}
+#home .weather-location{gap:7px!important}
+#home .weather-location-dot{width:29px!important;height:29px!important;border-radius:9px!important}
+#home .weather-location-dot svg{width:16px!important;height:16px!important}
+#home .weather-location small{font-size:8px!important;letter-spacing:.5px!important}
+#home .weather-location strong{font-size:13px!important;margin-top:1px!important}
+#home .weather-locate{padding:5px 8px!important;border-radius:9px!important;font-size:10px!important}
+#home .weather-locate svg{width:13px!important;height:13px!important}
+#home .weather-main{min-height:0!important;height:76px!important;padding:4px 0!important;gap:8px!important}
+#home .weather-temp{font-size:42px!important;line-height:1!important;letter-spacing:-2px!important}
+#home .weather-desc{font-size:12px!important;margin-top:2px!important}
+#home .weather-feels{font-size:10px!important;margin-top:2px!important}
+#home .weather-art{width:62px!important;height:62px!important;border-radius:18px!important}
+#home .weather-art svg{width:42px!important;height:42px!important}
+#home .weather-bottom{padding:7px 0 0!important;font-size:10px!important;gap:5px!important}
+#home .weather-bottom svg{width:13px!important;height:13px!important}
+#home .weather-controls{margin-top:7px!important;padding-top:7px!important;gap:6px!important}
+#home .weather-controls label{font-size:10px!important}
+#home .weather-controls select{max-width:49%!important;padding:5px 7px!important;font-size:11px!important;border-radius:8px!important}
+#home .weather-controls button{width:29px!important;height:29px!important;border-radius:8px!important}
+#home .weather-controls button svg{width:15px!important;height:15px!important}
+#home.page{padding-top:10px!important}
+#home .home-progress{padding:12px!important;margin-bottom:10px!important}
+#home .metrics{gap:8px!important;margin-bottom:10px!important}
+#home .metrics .card{padding:11px 5px!important}
+#home .metrics .card svg{width:20px!important;height:20px!important}
+#home .metrics strong{font-size:20px!important}
+#home .metrics small{font-size:10px!important}
+#home .section-title{margin:10px 0!important}
+@media(max-width:380px){#home .weather-temp{font-size:37px!important}#home .weather-art{width:54px!important;height:54px!important}#home .weather-art svg{width:36px!important;height:36px!important}#home .weather-bottom{font-size:9px!important}}
