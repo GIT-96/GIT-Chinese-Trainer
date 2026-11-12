@@ -95,3 +95,26 @@ html,body{min-height:100%;background:#f8fbff}
 .page-heading{display:none!important}
 .practice-card{margin-top:0}
 @media(max-width:380px){.brand-label strong{font-size:15px}.brand-label small{font-size:10px}}
+
+/* Weather live card replaces the decorative home landscape */
+.weather-card{background:linear-gradient(135deg,#c9ebff 0%,#eaf8ff 58%,#d8edff 100%);border:1px solid #b8ddf7;border-radius:20px;box-shadow:0 5px 18px #2376bc18;color:#16406e;padding:14px 15px;margin-bottom:13px}
+.weather-top,.weather-main,.weather-bottom,.weather-controls{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.weather-location{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:700;min-width:0}
+.weather-location svg{width:16px;height:16px;flex-shrink:0}
+.weather-locate{display:flex;align-items:center;gap:5px;border:1px solid #8ec5f0;border-radius:999px;background:#ffffffa8;color:#125b9c;padding:6px 10px;font-size:11px}
+.weather-locate svg{width:14px;height:14px}
+.weather-main{min-height:106px;padding:7px 0}
+.weather-temp{font-size:49px;line-height:1.1;font-weight:750;letter-spacing:-2px}
+.weather-desc{font-size:14px;font-weight:700;margin-top:2px}
+.weather-feels{font-size:11px;color:#4c7297;margin-top:4px}
+.weather-art{width:96px;height:96px;display:grid;place-items:center;border-radius:50%;background:#ffffff80}
+.weather-art svg{width:65px;height:65px;color:#0a79d6;stroke-width:1.5}
+.weather-bottom{border-top:1px solid #a7d5f0;padding-top:10px;font-size:11px;color:#315f88;flex-wrap:wrap}
+.weather-bottom span{display:flex;align-items:center;gap:4px}
+.weather-bottom svg{width:14px;height:14px}
+.weather-controls{margin-top:11px;justify-content:flex-end}
+.weather-controls label{font-size:11px;color:#426d94}
+.weather-controls select{width:auto;max-width:60%;padding:7px 10px;border-radius:9px;background:#fff;color:#16406e;border:1px solid #b2d7f2;font-size:12px}
+.weather-controls button{border:1px solid #b2d7f2;border-radius:9px;background:#fff;color:#096ed0;width:34px;height:34px;display:grid;place-items:center}
+.weather-controls button svg{width:17px;height:17px}
+@media(max-width:360px){.weather-temp{font-size:42px}.weather-art{width:74px;height:74px}.weather-art svg{width:49px;height:49px}}
