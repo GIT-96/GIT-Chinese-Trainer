@@ -10,8 +10,60 @@ function shuffle(a){return [...a].sort(()=>Math.random()-.5)}
 function renderStats(){const h=state.history;const events=h.events||[];const acc=h.done?Math.round(h.correct/h.done*100):0;const unique=new Set(Object.keys(h.mastered||{}));const days=new Set(events.map(e=>e.at.slice(0,10)));const mastered=unique.size;const pct=state.words.length?Math.round(mastered/state.words.length*100):0;for(const [id,value] of [['totalScore',h.score],['totalDone',h.done],['accuracy',acc+'%'],['statScore',h.score],['statAccuracy',acc+'%'],['statCorrectCount',h.correct],['statWrongCount',Math.max(0,h.done-h.correct)],['studyDays',days.size],['homeWords',mastered+'/'+state.words.length],['homeProgress',pct+'%']])$(id).textContent=value;$('homeBar').style.width=pct+'%';const bars=$('weeklyChart');const now=new Date();const dates=Array.from({length:7},(_,i)=>{const d=new Date(now);d.setDate(now.getDate()-6+i);return d.toLocaleDateString('en-CA')});const totals=dates.map(d=>events.filter(e=>e.at.slice(0,10)===d).length);const max=Math.max(1,...totals);bars.classList.toggle('chart-empty',totals.every(n=>n===0));bars.replaceChildren(...totals.map((n,i)=>{const bar=document.createElement('div');bar.style.height=(n?Math.max(8,n/max*100):0)+'%';bar.title=dates[i]+': '+n+' lượt';bar.dataset.count=String(n);bar.setAttribute('aria-label',bar.title);return bar}));const labels=document.querySelector('.chart-labels');labels.replaceChildren(...dates.map(d=>{const s=document.createElement('span');s.textContent=new Date(d+'T12:00:00').toLocaleDateString('vi-VN',{weekday:'short'});return s}));const circle=document.querySelector('.result-circle');if(circle)circle.style.background=h.done?'conic-gradient(#18b778 '+acc+'%,#f06b71 0)':'conic-gradient(#dce8f5 100%)';}
 function speech(text,rate=.9){if(!('speechSynthesis'in window)){alert('Trình duyệt không hỗ trợ đọc văn bản. Hãy dùng Chrome hoặc Samsung Internet.');return}const synth=speechSynthesis;synth.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='zh-CN';u.rate=rate;const voices=synth.getVoices();u.voice=voices.find(v=>v.lang.toLowerCase()==='zh-cn')||voices.find(v=>v.lang.toLowerCase().startsWith('zh'))||null;u.onerror=e=>{if(e.error!=='canceled')console.warn('Speech:',e.error)};synth.speak(u)}
 function newQuiz(onlyWrong=false){let pool=onlyWrong?state.words.filter(w=>state.history.wrong[w.hanzi]):state.words;if(!pool.length){alert('Chưa có từ sai để ôn.');return}const mode=$('mode').value;const types=['hanzi','meaning','pinyin'];state.quiz=shuffle(pool).slice(0,Math.min(10,pool.length)).map((word,i)=>({word,type:mode==='mixed'?types[i%3]:mode}));state.index=0;state.sessionScore=0;state.locked=false;state.wrongOnly=onlyWrong;$('sessionResult').hidden=true;$('answerForm').hidden=false;$('next').hidden=true;$('feedback').hidden=true;switchTab('practice');renderQuestion()}
-function renderQuestion(){const q=state.quiz[state.index];if(!q)return;$('progress').textContent=`Câu ${state.index+1}/${state.quiz.length}`;$('quizBar').style.width=((state.index+1)/state.quiz.length*100)+'%';$('questionType').textContent=({hanzi:'Dịch tiếng Việt sang chữ Hán',meaning:'Dịch chữ Hán sang tiếng Việt',pinyin:'Nhập Pinyin có dấu hoặc số thanh điệu'})[q.type];$('prompt').textContent=q.type==='hanzi'?q.word.vi[0]:q.word.hanzi;$('questionExtra').textContent=q.type==='hanzi'?'Nhập chữ Hán bằng bàn phím Pinyin':'HSK 1';$('answer').value='';$('answer').disabled=false;$('check').disabled=false;$('check').hidden=false;$('feedback').hidden=true;$('next').hidden=true;state.locked=false;$('tonePad').hidden=q.type!=='pinyin';$('answer').placeholder=q.type==='hanzi'?'Ví dụ: 你好':q.type==='meaning'?'Nhập nghĩa tiếng Việt...':'Ví dụ: nǐ hǎo hoặc ni3 hao3'}
-function submitAnswer(e){e.preventDefault();if(state.locked)return;const answer=$('answer').value.trim();if(!answer)return;const q=state.quiz[state.index];const ok=answerOk(q.word,q.type,answer);state.locked=true;$('answer').disabled=true;$('check').hidden=true;state.history.done++;state.history.events??=[];state.history.mastered??={};state.history.events.push({at:new Date().toISOString(),hanzi:q.word.hanzi,correct:ok,mode:q.type,points:ok?10:0});if(state.history.events.length>3000)state.history.events=state.history.events.slice(-3000);if(ok){state.history.correct++;state.history.score+=10;state.history.mastered[q.word.hanzi]=true;state.sessionScore+=10;if(state.history.wrong[q.word.hanzi])delete state.history.wrong[q.word.hanzi]}else {delete state.history.mastered[q.word.hanzi];state.history.wrong[q.word.hanzi]=(state.history.wrong[q.word.hanzi]||0)+1}persist();const f=$('feedback');f.hidden=false;f.className='feedback '+(ok?'ok':'bad');f.textContent=(ok?'✓ Chính xác! +10 điểm':'✗ Chưa chính xác. 0 điểm')+`\nĐáp án: ${q.type==='hanzi'?q.word.hanzi:q.type==='pinyin'?q.word.pinyin:q.word.vi.join(' / ')}\n${q.word.hanzi} · ${q.word.pinyin} · ${q.word.vi[0]}`;f.style.whiteSpace='pre-line';$('next').hidden=false;$('next').textContent=state.index===state.quiz.length-1?'Xem kết quả':'Câu tiếp theo →';renderWrong()}
+function renderQuestion(){const q=state.quiz[state.index];if(!q)return;$('progress').textContent=`Câu ${state.index+1}/${state.quiz.length}`;$('quizBar').style.width=((state.index+1)/state.quiz.length*100)+'%';$('questionType').textContent=({hanzi:'Dịch tiếng Việt sang chữ Hán',meaning:'Dịch chữ Hán sang tiếng Việt',pinyin:'Nhập Pinyin có dấu hoặc số thanh điệu'})[q.type];$('prompt').textContent=q.type==='hanzi'?q.word.vi[0]:q.word.hanzi;$('questionExtra').textContent=q.type==='hanzi'?'Nhập chữ Hán bằng bàn phím Pinyin':'HSK 1';$('answer').value='';$('answer').disabled=false;$('check').disabled=false;$('check').hidden=false;$('feedback').hidden=true;$('next').hidden=true;state.locked=false;$('check').textContent='Kiểm tra';$('answer').removeAttribute('aria-invalid');$('tonePad').hidden=q.type!=='pinyin';$('answer').placeholder=q.type==='hanzi'?'Ví dụ: 你好':q.type==='meaning'?'Nhập nghĩa tiếng Việt...':'Ví dụ: nǐ hǎo hoặc ni3 hao3'}
+function submitAnswer(e){
+  e.preventDefault();
+  if(state.locked)return;
+  const input=$('answer'),answer=input.value.trim();
+  if(!answer)return;
+  const q=state.quiz[state.index];
+  if(!q)return;
+  const ok=answerOk(q.word,q.type,answer);
+  const firstAttempt=!q.attempted;
+  q.attempted=true;
+  state.history.events??=[];
+  state.history.mastered??={};
+  state.history.wrong??={};
+  if(firstAttempt){
+    state.history.done++;
+    state.history.events.push({at:new Date().toISOString(),hanzi:q.word.hanzi,correct:ok,mode:q.type,points:ok?10:0});
+    if(state.history.events.length>3000)state.history.events=state.history.events.slice(-3000);
+    if(ok){
+      state.history.correct++;
+      state.history.score+=10;
+      state.sessionScore+=10;
+      state.history.mastered[q.word.hanzi]=true;
+      delete state.history.wrong[q.word.hanzi];
+    }else{
+      delete state.history.mastered[q.word.hanzi];
+      state.history.wrong[q.word.hanzi]=(state.history.wrong[q.word.hanzi]||0)+1;
+    }
+    persist();
+    renderWrong();
+  }
+  const f=$('feedback');
+  f.hidden=false;
+  f.className='feedback '+(ok?'ok':'bad');
+  const solution=q.type==='hanzi'?q.word.hanzi:q.type==='pinyin'?q.word.pinyin:q.word.vi.join(' / ');
+  f.textContent=(ok?(firstAttempt?'✓ Chính xác! +10 điểm':'✓ Đã nhập đúng! Không cộng điểm lần nữa'):'✗ Chưa chính xác. Bạn có thể sửa và thử lại.')+
+    '\\nĐáp án: '+solution+'\\n'+q.word.hanzi+' · '+q.word.pinyin+' · '+q.word.vi[0];
+  f.style.whiteSpace='pre-line';
+  $('next').hidden=false;
+  $('next').textContent=state.index===state.quiz.length-1?'Xem kết quả':'Câu tiếp theo →';
+  if(ok){
+    state.locked=true;
+    input.disabled=true;
+    $('check').hidden=true;
+  }else{
+    state.locked=false;
+    input.disabled=false;
+    $('check').hidden=false;
+    $('check').textContent='Thử lại';
+    input.setAttribute('aria-invalid','true');
+    input.select();
+  }
+  $('next').scrollIntoView({block:'nearest',behavior:'smooth'});
+}
 function nextQuestion(){state.index++;if(state.index<state.quiz.length)renderQuestion();else{$('answerForm').hidden=true;$('next').hidden=true;$('feedback').hidden=true;$('progress').textContent='Hoàn thành';const r=$('sessionResult');r.hidden=false;r.replaceChildren();const h=document.createElement('h2');h.textContent='🎉 Hoàn thành bài luyện';const p=document.createElement('p');p.textContent='Điểm bài này';const s=document.createElement('strong');s.textContent=`${state.sessionScore}/${state.quiz.length*10}`;const b=document.createElement('button');b.className='primary';b.textContent='Làm bài mới';b.onclick=()=>newQuiz(false);r.append(h,p,s,document.createElement('br'),b)}}
 function switchTab(tab){const titles={home:'Trang chủ',practice:'Luyện gõ tiếng Trung',vocab:'Từ vựng HSK 1',review:'Ôn tập từ sai',ai:'Trợ lý AI',stats:'Thống kê học tập'};const title=$('topTitle');if(title)title.textContent=titles[tab]||'GIT Chinese Trainer AI';window.refreshLucide?.();document.querySelectorAll('.bottom-nav button').forEach(b=>b.classList.toggle('active',b.dataset.open===tab));['home','practice','vocab','review','ai','stats'].forEach(t=>$(t).hidden=t!==tab);if(tab==='vocab')renderVocab();if(tab==='review')renderWrong();window.scrollTo({top:0,behavior:'instant'})}
 function makeWordRow(w){const row=document.createElement('div');row.className='vocab-item';const left=document.createElement('div');const strong=document.createElement('strong');strong.textContent=w.hanzi;const detail=document.createElement('small');detail.textContent=`${w.pinyin} · ${w.vi.join(' / ')}`;left.append(strong,detail);const play=document.createElement('button');play.className='secondary';play.innerHTML='<i data-lucide="volume-2" aria-hidden="true"></i>';play.setAttribute('aria-label','Nghe '+w.hanzi);play.onclick=()=>speech(w.hanzi);row.append(left,play);return row}
