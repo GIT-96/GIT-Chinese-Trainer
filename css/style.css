@@ -545,3 +545,18 @@ html,body{width:100%;max-width:100%;overflow-x:hidden}
 .write-progress-track{height:9px;overflow:hidden;border-radius:999px;background:#d6e6f7}
 .write-progress-track span{display:block;height:100%;width:0;background:linear-gradient(90deg,#1673e9,#13b99b);border-radius:inherit;transition:width .16s ease}
 #writeGrade:disabled{opacity:.65;cursor:wait}
+
+/* V20: centered handwriting grading and visible results */
+.write-grade-overlay[hidden],.write-progress[hidden],.write-feedback[hidden],.write-grade-done[hidden]{display:none!important}
+.write-grade-overlay{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(10,29,56,.54);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+.write-grade-dialog{position:relative;width:min(100%,390px);max-height:min(85dvh,650px);overflow-y:auto;background:#fff;border-radius:22px;padding:25px 20px 20px;box-shadow:0 24px 70px rgba(6,36,80,.28);color:#173552;text-align:center}
+.write-grade-close{position:absolute;right:12px;top:12px;border:0;background:#edf4fd;border-radius:50%;width:34px;height:34px;display:grid;place-items:center;color:#3e6287}
+.write-grade-close svg{width:18px;height:18px}
+.write-grade-icon{width:56px;height:56px;margin:0 auto 12px;display:grid;place-items:center;border-radius:18px;background:#e8f3ff;color:#0876ed}
+.write-grade-icon svg{width:28px;height:28px}
+.write-grade-dialog h3{font-size:19px;line-height:1.3;margin:0 25px 6px}
+.write-grade-dialog>p{font-size:13px;color:#66809b;margin:0 0 16px}
+.write-grade-dialog .write-progress{text-align:left}
+.write-grade-dialog .write-feedback{text-align:left;margin-top:12px}
+.write-grade-dialog .write-feedback strong{font-size:19px}
+.write-grade-done{display:block;width:100%;margin-top:16px;border:0;border-radius:12px;background:#0876ed;color:#fff;padding:13px;font-weight:700;font-size:14px}
