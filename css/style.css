@@ -75,3 +75,23 @@ button svg{vertical-align:middle;display:inline-block;width:18px;height:18px;fle
 .send svg{width:21px;height:21px}
 .vocab-item button{display:grid;place-items:center}
 .vocab-item button svg{width:20px;height:20px}
+
+/* V5: single compact fixed navigation header, no duplicate blue page banner */
+:root{--app-nav:#0867d9}
+html,body{min-height:100%;background:#f8fbff}
+.shell{padding-top:70px;padding-bottom:calc(76px + env(safe-area-inset-bottom));min-height:100dvh}
+.top{position:fixed;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:520px;height:70px;z-index:40;padding:10px 15px!important;background:var(--app-nav)!important;box-shadow:0 3px 12px rgba(4,65,141,.16)}
+.brand{min-width:0;gap:10px}
+.brand-label{min-width:0}
+.brand-label strong{display:block;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand-label small{display:block;font-size:11px;color:#d9edff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand-mark{height:38px;width:38px;border-radius:11px}
+.brand-mark svg{width:22px;height:22px}
+.icon-btn{height:38px;width:38px;border-radius:11px;flex-shrink:0}
+.bottom-nav{background:var(--app-nav)!important;box-shadow:0 -3px 12px rgba(4,65,141,.13);padding-top:7px;padding-bottom:max(8px,env(safe-area-inset-bottom))}
+.bottom-nav button{color:#dbeaff}
+.bottom-nav button.active{color:#fff;background:#ffffff24}
+.page{padding:14px 13px 24px!important;background:#f8fbff}
+.page-heading{display:none!important}
+.practice-card{margin-top:0}
+@media(max-width:380px){.brand-label strong{font-size:15px}.brand-label small{font-size:10px}}
