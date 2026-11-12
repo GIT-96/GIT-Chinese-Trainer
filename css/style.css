@@ -471,3 +471,43 @@ html,body{width:100%;max-width:100%;overflow-x:hidden}
 #ai .ai-settings-status{font-size:11px;color:#6b819c;margin:9px 0}
 #ai .ai-settings-sheet .primary{width:100%;border-radius:11px}
 @media(max-height:600px){#ai .chat-toolbar{padding:7px 12px}#ai .chat-hint{display:none}}
+
+/* V16 vocabulary: compact native-feeling list and handwriting */
+#vocab.page{background:#f7faff!important;color:#183451!important}
+#vocab .searchbox{background:#fff!important;border:1px solid #dbe7f5!important;border-radius:16px!important;min-height:50px!important}
+#vocab .searchbox input{background:transparent!important;color:#183451!important;font-size:14px!important}
+#vocab .searchbox input::placeholder{color:#8195aa!important}
+#vocab .chip{border-radius:999px!important;font-size:12px!important}
+#vocab .chip:not(.active){background:#eaf2fc!important;color:#45627f!important}
+#vocab .list-title{color:#183451!important}
+#vocab .vocab-list{scrollbar-width:none!important;overscroll-behavior:contain}
+#vocab .vocab-list::-webkit-scrollbar{display:none}
+#vocab .vocab-item{background:#fff!important;border:1px solid #e0eaf6!important;border-radius:16px!important;min-height:76px!important;padding:12px 14px!important;box-shadow:0 4px 15px #0b4c8e08!important;display:flex!important;align-items:center!important;gap:8px!important}
+#vocab .vocab-item>div:first-child{flex:1;min-width:0}
+#vocab .vocab-item strong{font-size:22px!important;color:#153858!important}
+#vocab .vocab-item small{font-size:12px!important;color:#68819b!important;line-height:1.4!important}
+.vocab-actions{display:flex;align-items:center;gap:7px;flex-shrink:0}
+.vocab-actions button{display:grid;place-items:center;width:38px;height:38px;border:0;border-radius:12px;background:#edf5ff;color:#0876ed;padding:0}
+.vocab-actions button svg{width:19px;height:19px}
+.vocab-actions .write-action{background:#e8f8f3;color:#0b9d79}
+.writing-open{overflow:hidden}
+.writing-overlay{position:fixed;inset:0;z-index:120;background:#081c3c99;display:flex;align-items:flex-end;justify-content:center;padding:10px;backdrop-filter:blur(4px)}
+.writing-overlay[hidden]{display:none!important}
+.writing-sheet{width:min(500px,100%);max-height:calc(100dvh - 24px);overflow:auto;background:#fff;border-radius:23px;padding:18px;color:#183451;box-shadow:0 18px 60px #001a4a45}
+.writing-head{display:flex;justify-content:space-between;align-items:flex-start}
+.writing-head small{font-size:10px;letter-spacing:1px;color:#0876ed;font-weight:750}
+.writing-head h2{font-size:23px;margin:3px 0}
+.writing-head p{font-size:12px;color:#647c96;margin:3px 0 12px}
+.writing-head>button{border:0;border-radius:10px;background:#edf4fd;width:35px;height:35px;color:#2b5c8b}
+.writing-sample{display:flex;align-items:center;gap:12px;padding:8px 0}
+.writing-sample span{font-size:12px;color:#7a8fa5}
+.writing-sample strong{font-size:26px;flex:1;line-height:1.2;color:#1b4f82}
+.writing-sample button{border:0;border-radius:9px;background:#eaf3ff;padding:8px 11px;color:#0967c8;font-size:12px}
+.writing-canvas-wrap{position:relative;width:min(100%,340px);aspect-ratio:1;margin:10px auto;border:2px solid #b7d8fa;border-radius:16px;background:#fbfdff;overflow:hidden}
+.writing-grid{position:absolute;inset:0;pointer-events:none;background:linear-gradient(to right,transparent calc(50% - .5px),#d9e8f8 50%,transparent calc(50% + .5px)),linear-gradient(to bottom,transparent calc(50% - .5px),#d9e8f8 50%,transparent calc(50% + .5px))}
+#writingCanvas{position:absolute;inset:0;width:100%;height:100%;z-index:1;touch-action:none}
+.writing-note{font-size:11px;color:#7b8da2;line-height:1.45;text-align:center}
+.writing-actions{display:flex;gap:8px;margin-top:14px}
+.writing-actions button{flex:1;min-width:0;border:0;border-radius:12px;background:#edf4fc;color:#23547f;min-height:44px;font-size:12px;font-weight:650;display:flex;justify-content:center;align-items:center;gap:5px}
+.writing-actions svg{width:15px;height:15px}
+.writing-actions .writing-primary{background:#0876ed;color:white}
