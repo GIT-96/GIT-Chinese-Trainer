@@ -383,3 +383,15 @@ html,body{width:100%;max-width:100%;overflow-x:hidden}
 .drawer-footer{margin-top:auto;border-top:1px solid #e6edf7;padding:14px 9px 0;color:#91a0b3;font-size:11px}
 @media(min-width:521px){.app-drawer{left:max(0px,calc((100vw - 520px)/2))}.drawer-backdrop{inset:0}}
 @media(prefers-reduced-motion:reduce){.app-drawer{transition:none}}
+
+/* V13 drawer: gentle staggered menu reveal */
+.drawer-links button{opacity:0;transform:translateX(-12px);transition:opacity .26s ease,transform .32s cubic-bezier(.2,.8,.2,1),background-color .2s ease;transition-delay:0ms}
+.app-drawer.is-open .drawer-links button{opacity:1;transform:translateX(0);transition-delay:calc(var(--menu-order,0)*42ms + 70ms)}
+.drawer-links button:nth-child(1){--menu-order:1}.drawer-links button:nth-child(2){--menu-order:2}.drawer-links button:nth-child(3){--menu-order:3}.drawer-links button:nth-child(4){--menu-order:4}.drawer-links button:nth-child(5){--menu-order:5}.drawer-links button:nth-child(6){--menu-order:6}
+.drawer-links button:active{transform:scale(.975)!important}
+.drawer-levels{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;padding:4px 8px}
+.drawer-levels button{border:1px solid #d8e6f7;border-radius:11px;padding:10px 0;background:#f4f8fe;color:#3e648d;font-size:12px;font-weight:750;transition:background .2s,transform .2s,color .2s}
+.drawer-levels button.selected{background:#0874e9;color:#fff;border-color:#0874e9;box-shadow:0 4px 12px #0a6ed02b}
+.drawer-levels button:active{transform:scale(.96)}
+.drawer-syllabus-note{font-size:10px;line-height:1.5;color:#7189a4;padding:0 11px;margin:8px 0 0}
+@media(prefers-reduced-motion:reduce){.drawer-links button{opacity:1;transform:none;transition:none!important}.app-drawer.is-open .drawer-links button{transition-delay:0ms}}
