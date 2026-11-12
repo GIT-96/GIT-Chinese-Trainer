@@ -118,3 +118,45 @@ html,body{min-height:100%;background:#f8fbff}
 .weather-controls button{border:1px solid #b2d7f2;border-radius:9px;background:#fff;color:#096ed0;width:34px;height:34px;display:grid;place-items:center}
 .weather-controls button svg{width:17px;height:17px}
 @media(max-width:360px){.weather-temp{font-size:42px}.weather-art{width:74px;height:74px}.weather-art svg{width:49px;height:49px}}
+
+/* V6 compact home weather and AI assistant */
+.weather-card{display:block!important;overflow:hidden;background:linear-gradient(125deg,#d7efff,#f0f9ff 62%,#d5ebff)!important;border:1px solid #c4e2f8!important;border-radius:20px!important;padding:15px!important;margin-bottom:14px!important;box-shadow:0 5px 16px #2468a215}
+.weather-top{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:8px!important}
+.weather-location{display:flex!important;align-items:center!important;gap:5px!important;font-size:13px!important;color:#155486!important}
+.weather-locate{display:inline-flex!important;align-items:center!important;gap:5px!important;background:#ffffffb8!important;border:1px solid #b5d7f1!important;border-radius:20px!important;padding:7px 10px!important;color:#1264ac!important;font-size:12px!important}
+.weather-main{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:12px!important;min-height:98px!important}
+.weather-temp{font-size:46px!important;font-weight:800!important;line-height:1.08!important;color:#125b9e!important}
+.weather-desc{font-size:14px!important;color:#174c79!important}
+.weather-feels{font-size:11px!important;color:#547b9d!important}
+.weather-art{width:85px!important;height:85px!important;display:grid!important;place-items:center!important;flex-shrink:0!important;background:#ffffff80!important;border-radius:50%!important}
+.weather-art svg{width:57px!important;height:57px!important}
+.weather-bottom{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:8px!important;padding-top:9px!important;border-top:1px solid #badcf3!important;font-size:11px!important}
+.weather-bottom span{display:inline-flex!important;align-items:center!important;gap:4px!important}
+.weather-controls{display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:8px!important;margin-top:10px!important}
+.weather-controls label{display:inline-flex!important;align-items:center!important;gap:4px!important;white-space:nowrap!important}
+.weather-controls label svg{width:14px;height:14px}
+.weather-controls select{width:auto!important;min-width:0!important;max-width:58%!important;padding:7px!important;border:1px solid #badcf3!important;border-radius:10px!important;background:white!important}
+.weather-controls button{display:grid!important;place-items:center!important;flex-shrink:0!important;width:34px!important;height:34px!important;padding:0!important;border:1px solid #badcf3!important;border-radius:10px!important;background:white!important}
+#ai.page{display:flex;flex-direction:column;gap:12px;min-height:calc(100dvh - 150px);padding-bottom:14px!important}
+.ai-hero{display:flex;align-items:center;gap:12px;padding:15px;border:1px solid #d4e7fb;background:linear-gradient(120deg,#e4f1ff,#f4f9ff);border-radius:18px}
+.ai-hero-avatar{display:grid;place-items:center;flex-shrink:0;width:52px;height:52px;background:#cce4ff;border-radius:16px;color:#096fdb}
+.ai-hero-avatar svg{width:31px;height:31px}
+.ai-hero strong{font-size:15px;color:#123e6d}
+.ai-hero p{font-size:12px;color:#55718c;line-height:1.5;margin:4px 0 7px}
+.ai-mode{display:inline-flex;align-items:center;gap:4px;font-size:10px;color:#0865bf;background:#fff;padding:4px 8px;border-radius:999px}
+.ai-mode svg{width:12px;height:12px}
+.ai-suggestions{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding:1px 0}
+.ai-suggestions button{display:inline-flex;align-items:center;gap:5px;white-space:nowrap;flex-shrink:0;border:1px solid #d3e4f7;border-radius:999px;padding:8px 10px;background:white;color:#285b90;font-size:11px}
+.ai-suggestions svg{width:15px;height:15px}
+#ai .chat{flex:1;min-height:150px;max-height:none;overflow-y:auto;display:flex;flex-direction:column;gap:12px;padding:4px 2px 10px}
+#ai .bubble{max-width:88%;padding:12px 14px;border-radius:17px;font-size:13px;line-height:1.6}
+#ai .bubble.bot{background:#fff;border:1px solid #e1eaf5}
+#ai .bubble.user{background:#0a74e8;color:#fff}
+#ai .chat-form{display:flex;align-items:center;gap:8px;margin-top:auto}
+#ai .chat-form input{height:48px;min-width:0;flex:1;border-radius:15px;padding:12px 14px;font-size:14px}
+#ai .send{display:grid;place-items:center;flex-shrink:0;width:48px;height:48px;border-radius:15px}
+#ai .ai-settings{margin-top:0;padding:11px 14px;border-radius:14px}
+#ai .ai-settings summary{font-size:12px;font-weight:650}
+#ai .ai-settings summary span{font-size:10px}
+#ai .ai-settings[open]{margin-bottom:12px}
+@media(max-width:380px){.weather-card{padding:12px!important}.weather-temp{font-size:39px!important}.weather-art{width:68px!important;height:68px!important}.weather-art svg{width:46px!important}.weather-bottom{font-size:10px!important}}
