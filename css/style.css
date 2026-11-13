@@ -653,32 +653,5 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid 
 @media(min-width:700px){.shell{box-shadow:0 0 40px #154e7d16}}
 @media(prefers-reduced-motion:reduce){.drawer-links button,.phonetics-tabs button{transition:none}}
 
-
-/* Native Android shell v28 */
-:root{color-scheme:light;--app-blue:#086bdc;--app-surface:#fff;--app-bg:#f4f8fe}
-html,body{min-height:100%;overscroll-behavior-y:none}
-.shell{max-width:100%;min-height:100dvh;padding-bottom:env(safe-area-inset-bottom);background:var(--app-bg)}
-.top{position:sticky;top:0;z-index:45;padding-top:max(10px,env(safe-area-inset-top));min-height:66px}
-.page{max-width:720px;margin:0 auto;padding-bottom:30px;animation:app-enter .18s ease-out}
-@keyframes app-enter{from{opacity:.72;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
-.bottom-nav{display:none!important}
-.app-drawer{max-height:100dvh;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none}
-.app-drawer::-webkit-scrollbar{display:none}
-.drawer-links button{min-height:47px;border-radius:13px}
-.drawer-links button.active{background:#e7f2ff;color:#075fce}
-.chat-toolbar{border-radius:16px;margin-bottom:10px}
-#ai.page{height:calc(100dvh - 66px - env(safe-area-inset-top) - env(safe-area-inset-bottom));min-height:390px;display:flex;flex-direction:column;overflow:hidden}
-#ai.page[hidden]{display:none!important}
-#ai .chat{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;padding-bottom:12px}
-#ai .chat::-webkit-scrollbar{display:none}
-.chat-suggestions{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:3px 0 12px;flex-shrink:0}
-.chat-suggestions::-webkit-scrollbar{display:none}
-.chat-suggestions button{white-space:nowrap;border:1px solid #dbe8f8;border-radius:999px;background:#fff;color:#27608f;padding:9px 13px;font-size:12px;font-weight:600}
-.chat-suggestions button:active{background:#e6f2ff}
-#ai .chat-bottom{flex-shrink:0;padding-bottom:max(10px,env(safe-area-inset-bottom));background:var(--app-bg)}
-#ai .chat-form{border-radius:17px}
-#ai .bubble{max-width:88%;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.55}
-#ai .bubble.bot{background:#fff;border:1px solid #e2ebf6;border-radius:17px 17px 17px 5px}
-#ai .bubble.user{background:#086bdf;color:#fff;border-radius:17px 17px 5px 17px}
-@media(min-width:720px){.top{padding-left:max(18px,calc((100vw - 720px)/2));padding-right:max(18px,calc((100vw - 720px)/2))}}
-@media(prefers-reduced-motion:reduce){.page{animation:none}}
+/* Stable v29: avoid first-launch backdrop obscuring the app on mobile */
+.permission-overlay[hidden],.drawer-backdrop[hidden],.ai-settings-overlay[hidden]{display:none!important}
