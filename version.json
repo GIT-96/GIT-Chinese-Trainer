@@ -1,5 +1,5 @@
 {
-  "version": "30",
-  "releasedAt": "2026-11-14",
-  "notes": "Manual update button; existing learning data unchanged."
+  "version": "31",
+  "releasedAt": "2026-11-15",
+  "notes": "Opt-in Supabase account and verified manual backup; local data preserved."
 }
