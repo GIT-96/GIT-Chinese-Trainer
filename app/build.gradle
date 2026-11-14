@@ -1,6 +1,6 @@
 plugins { id 'com.android.application' }
 android { namespace 'vn.git.chinesetrainer'; compileSdk 35
- defaultConfig { applicationId 'vn.git.chinesetrainer'; minSdk 26; targetSdk 35; versionCode 25; versionName '1.0.25' }
+ defaultConfig { applicationId 'vn.git.chinesetrainer'; minSdk 26; targetSdk 35; versionCode 26; versionName '1.0.26' }
  buildTypes { release { minifyEnabled false } }
  compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
 }
