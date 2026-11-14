@@ -1,32 +1,10 @@
-/* Isolated Supabase Auth REST client. No automatic login or data upload.
-   Access token is held in memory, not localStorage. */
-(function(root,factory){
- const api=factory();
- if(typeof module!=='undefined'&&module.exports)module.exports=api;
- else root.GITSupabaseAuth=api;
-})(typeof window!=='undefined'?window:globalThis,function(){
- 'use strict';
- const sync=typeof require==='function'?require('./supabase-sync.js'):null;
- function origin(config){
-  if(sync)return sync.validateConfig(config);
-  if(!config||typeof config.url!=='string'||typeof config.publishableKey!=='string'||!config.publishableKey.trim())throw Error('Thiếu cấu hình Supabase.');
-  const u=new URL(config.url);
-  if(u.protocol!=='https:'||!/^[a-z0-9-]+\.supabase\.co$/i.test(u.hostname)||u.pathname!=='/'||u.search||u.hash)throw Error('Supabase URL không hợp lệ.');
-  return u.origin;
- }
- async function signInWithPassword(opts){
-  const base=origin(opts.config);
-  if(!opts.email||!opts.password)throw Error('Cần email và mật khẩu.');
-  const request=opts.fetch||(typeof fetch!=='undefined'?fetch:null);
-  if(!request)throw Error('Không có kết nối mạng.');
-  const response=await request(base+'/auth/v1/token?grant_type=password',{
-   method:'POST',headers:{apikey:opts.config.publishableKey,'Content-Type':'application/json'},
-   body:JSON.stringify({email:opts.email,password:opts.password})
-  });
-  if(!response.ok)throw Error('Đăng nhập thất bại (HTTP '+response.status+').');
-  const result=await response.json();
-  if(!result.access_token||!result.user||!result.user.id)throw Error('Phiên đăng nhập không hợp lệ.');
-  return {accessToken:result.access_token,userId:result.user.id,expiresIn:result.expires_in||0};
- }
- return Object.freeze({signInWithPassword});
+/* Supabase Auth REST client. Tokens stay in memory only. */
+(function(root,factory){const api=factory();if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.GITSupabaseAuth=api;})(typeof window!=='undefined'?window:globalThis,function(){
+'use strict';
+function origin(config){if(!config||typeof config.url!=='string'||typeof config.publishableKey!=='string'||!config.publishableKey.trim())throw Error('Thiếu URL hoặc publishable key Supabase.');const u=new URL(config.url);if(u.protocol!=='https:'||!/^[a-z0-9-]+\.supabase\.co$/i.test(u.hostname)||u.pathname!=='/'||u.search||u.hash)throw Error('Supabase URL không hợp lệ.');return u.origin;}
+async function request(config,path,body,fetcher){const fn=fetcher||(typeof fetch==='function'?fetch:null);if(!fn)throw Error('Không có kết nối mạng.');const response=await fn(origin(config)+path,{method:'POST',headers:{apikey:config.publishableKey,'Content-Type':'application/json'},body:JSON.stringify(body)});let data={};try{data=await response.json();}catch{}if(!response.ok)throw Error(data.msg||data.error_description||data.message||('Yêu cầu thất bại: HTTP '+response.status));return data;}
+function normalize(data){if(!data.access_token||!data.user?.id)throw Error('Phiên đăng nhập không hợp lệ.');return {accessToken:data.access_token,refreshToken:data.refresh_token||null,userId:data.user.id,expiresAt:Date.now()+Math.max(0,(data.expires_in||3600)-60)*1000};}
+async function signInWithPassword(o){if(!o.email||!o.password)throw Error('Cần email và mật khẩu.');return normalize(await request(o.config,'/auth/v1/token?grant_type=password',{email:o.email,password:o.password},o.fetch));}
+async function refreshSession(o){if(!o.refreshToken)throw Error('Phiên đăng nhập đã hết hạn. Vui lòng đăng nhập lại.');return normalize(await request(o.config,'/auth/v1/token?grant_type=refresh_token',{refresh_token:o.refreshToken},o.fetch));}
+return Object.freeze({signInWithPassword,refreshSession,origin});
 });
