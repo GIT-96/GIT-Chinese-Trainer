@@ -1,0 +1,5 @@
+{
+  "version": "29",
+  "releasedAt": "2026-11-14",
+  "notes": "Stable baseline; user-triggered update control prepared on upgrade branch."
+}
