@@ -17,7 +17,7 @@ test('does not upload if no history',async()=>{
 test('acknowledged snapshot increments revision',async()=>{
   const storage=store({'gct-history':JSON.stringify({done:3,correct:2})});
   let posted;
-  const opts={consent:true,config,accessToken:'token',userId:'11111111-1111-4111-8111-111111111111',uuid:'22222222-2222-4222-8222-222222222222',storage,fetch:async (url,req)=>{posted=JSON.parse(req.body);return {ok:true,status:201}}};
+  const opts={consent:true,config,accessToken:'token',userId:'11111111-1111-4111-8111-111111111111',uuid:'22222222-2222-4222-8222-222222222222',storage,fetch:async (url,req)=>{posted=JSON.parse(req.body);return {ok:true,status:201,json:async()=>[{id:'33333333-3333-4333-8333-333333333333',revision:posted.revision,user_id:posted.user_id,device_id:posted.device_id}]}}};
   const r=await sync.uploadSnapshot(opts);
   assert.equal(r.revision,1);assert.equal(posted.payload.history.done,3);
   assert.equal(storage.getItem('gct-sync-revision-v1'),'1');
