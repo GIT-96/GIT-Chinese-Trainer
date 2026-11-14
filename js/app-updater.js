@@ -1,7 +1,7 @@
 /* User-triggered PWA update: does not clear localStorage, IndexedDB or user data. */
 (function(){
 'use strict';
-const CURRENT='30';
+const CURRENT='31';
 const PATH='./version.json';
 let checking=false;
 function status(message){const el=document.getElementById('appUpdateStatus');if(el){el.textContent=message;el.setAttribute('role','status')}}
