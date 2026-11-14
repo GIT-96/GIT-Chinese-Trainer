@@ -45,9 +45,10 @@ jobs:
           # A minimal online WebView wrapper can be small; do not assume a multi-MB APK.
           test "$BYTES" -ge 8192 || { echo "::error::APK is suspiciously small"; exit 1; }
           unzip -t "$APK" >/dev/null
-          unzip -Z1 "$APK" | grep -Eq '^classes([0-9]+)?[.]dex
+          unzip -Z1 "$APK" > /tmp/git-apk-entries.txt
+          grep -Eq '^classes([0-9]+)?[.]dex$' /tmp/git-apk-entries.txt || { echo "::error::Missing classes.dex"; exit 1; }
  || { echo "::error::Missing classes.dex"; exit 1; }
-          unzip -Z1 "$APK" | grep -Fxq 'AndroidManifest.xml' || { echo "::error::Missing AndroidManifest.xml"; exit 1; }
+          grep -Fxq 'AndroidManifest.xml' /tmp/git-apk-entries.txt || { echo "::error::Missing AndroidManifest.xml"; exit 1; }
           BUILD_TOOLS="$ANDROID_HOME/build-tools/35.0.0"
           "$BUILD_TOOLS/apksigner" verify --verbose "$APK"
           "$BUILD_TOOLS/aapt" dump badging "$APK" | tee /tmp/git-apk-badging.txt
