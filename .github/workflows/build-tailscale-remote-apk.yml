@@ -1,0 +1,39 @@
+name: Build Tailscale Remote APK
+on:
+  push:
+    branches: [feature/tailscale-remote-apk-v1]
+    paths:
+      - 'remoteapp/**'
+      - 'settings.gradle'
+      - '.github/workflows/build-tailscale-remote-apk.yml'
+  workflow_dispatch:
+jobs:
+  build-remote:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - name: Install Android SDK
+        run: |
+          yes | sdkmanager --licenses >/dev/null || true
+          sdkmanager "platforms;android-35" "build-tools;35.0.0"
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.10.2'
+      - name: Build remote Android APK
+        run: gradle --no-daemon :remoteapp:assembleDebug
+      - name: Verify APK
+        run: |
+          test -s remoteapp/build/outputs/apk/debug/remoteapp-debug.apk
+          ls -lh remoteapp/build/outputs/apk/debug/remoteapp-debug.apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: GIT-Chinese-Tailscale-AutoConnect-APK
+          path: remoteapp/build/outputs/apk/debug/remoteapp-debug.apk
+          if-no-files-found: error
